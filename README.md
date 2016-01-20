@@ -1,0 +1,2 @@
+# notGM
+autoKick plugin

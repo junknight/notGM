@@ -16,8 +16,11 @@ class notGM extends PluginBase implements Listener {
 		$commandmap = $this->getServer()->getCommandMap();
     }
     public function notGM(PlayerGameModeChangeEvent $event) {
-    	$event->getPlayer()->kick("당신의 게임모드가 변경되었습니다 , OP가 아니므로 킥합니다")
-        if ($event->getPlayer()->isOp());
+        if (!$event->getPlayer()->isOp()) {
+        	$event->getPlayer()->kick("당신의 게임모드가 변경되었습니다 , OP가 아니므로 킥합니다"); //게임모드가 바뀔시 킥
+        } else {
+        	$event->setCancelled(); //오피가 아닐경우 이벤트 비활성화
+        }
     }
     
 }

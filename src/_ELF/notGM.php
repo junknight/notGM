@@ -17,7 +17,9 @@ class notGM extends PluginBase implements Listener {
     }
     public function notGM(PlayerGameModeChangeEvent $event) {
         if (!$event->getPlayer()->isOp()) {
-        	$event->getPlayer()->kick("당신의 게임모드가 변경되었습니다 , OP가 아니므로 킥합니다");
+        	$event->getPlayer()->kick("당신의 게임모드가 변경되었습니다 , OP가 아니므로 킥합니다"); //게임모드가 바뀔시 킥
+        } else {
+        	$event->setCancelled(); //오피가 아닐경우 이벤트 비활성화
         }
     }
     
